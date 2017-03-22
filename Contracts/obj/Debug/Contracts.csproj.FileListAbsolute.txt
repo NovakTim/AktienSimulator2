@@ -13,3 +13,8 @@ C:\Users\Picblick\Source\Repos\AktienSimulator2\Contracts\bin\Debug\Contracts.pd
 C:\Users\Picblick\Source\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.csprojResolveAssemblyReference.cache
 C:\Users\Picblick\Source\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.dll
 C:\Users\Picblick\Source\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.pdb
+D:\Repos\AktienSimulator2\Contracts\bin\Debug\Contracts.dll
+D:\Repos\AktienSimulator2\Contracts\bin\Debug\Contracts.pdb
+D:\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.csprojResolveAssemblyReference.cache
+D:\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.dll
+D:\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.pdb

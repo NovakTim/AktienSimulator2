@@ -76,13 +76,13 @@ namespace AktienSimulator {
         protected global::System.Web.UI.WebControls.TextBox textAnzahl;
         
         /// <summary>
-        /// UpdatePanel1-Steuerelement
+        /// UpdatePanelStock-Steuerelement
         /// </summary>
         /// <remarks>
         /// Automatisch generiertes Feld
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanelStock;
         
         /// <summary>
         /// GridView1-Steuerelement

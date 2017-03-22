@@ -48,3 +48,13 @@ C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Model
 C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.csprojResolveAssemblyReference.cache
 C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.dll
 C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.pdb
+D:\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\ApplicationLogic.dll
+D:\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\ApplicationLogic.pdb
+D:\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Contracts.dll
+D:\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Model.dll
+D:\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Contracts.pdb
+D:\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Model.pdb
+D:\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Model.dll.config
+D:\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.csprojResolveAssemblyReference.cache
+D:\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.dll
+D:\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.pdb

@@ -1,12 +1,8 @@
 ﻿using Contracts;
 using Model.AktienSimulatorDataSetTableAdapters;
 using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model
 {
@@ -61,7 +57,7 @@ namespace Model
                 row.Passwort = reader["Passwort"].ToString();
                 row.Bilanz = Convert.ToDecimal(reader["Bilanz"]);
 
-                if(row.Passwort == password)
+                if (row.Passwort == password)
                 {
                     errorcode = ErrorCodes.Login.NoError;
                     connection.Close();

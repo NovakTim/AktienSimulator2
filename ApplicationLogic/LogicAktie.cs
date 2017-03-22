@@ -1,11 +1,6 @@
 ﻿using Contracts;
 using Model;
-using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationLogic
 {
@@ -16,7 +11,7 @@ namespace ApplicationLogic
             var depot = LogicDepot.GetDepotOrCreate(account.Nickname, depots, aktieID, ref newDepotCreated);
 
             var sum = depot.AktieRow.Kurs * anzahl;
-            if(account.Bilanz >= sum)
+            if (account.Bilanz >= sum)
             {
                 depot.Anzahl += anzahl;
                 account.Bilanz -= sum;

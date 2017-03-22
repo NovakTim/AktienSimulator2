@@ -43,7 +43,6 @@ namespace AktienSimulator
 
         protected void btnTest_Click(object sender, EventArgs e)
         {
-            
         }
 
         protected void lblAccount_DataBinding(object sender, EventArgs e)

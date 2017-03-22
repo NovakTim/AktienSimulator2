@@ -30,3 +30,11 @@ C:\Users\Picblick\Source\Repos\AktienSimulator2\Model\bin\Debug\Contracts.pdb
 C:\Users\Picblick\Source\Repos\AktienSimulator2\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
 C:\Users\Picblick\Source\Repos\AktienSimulator2\Model\obj\Debug\Model.dll
 C:\Users\Picblick\Source\Repos\AktienSimulator2\Model\obj\Debug\Model.pdb
+D:\Repos\AktienSimulator2\Model\bin\Debug\Model.dll.config
+D:\Repos\AktienSimulator2\Model\bin\Debug\Model.dll
+D:\Repos\AktienSimulator2\Model\bin\Debug\Model.pdb
+D:\Repos\AktienSimulator2\Model\bin\Debug\Contracts.dll
+D:\Repos\AktienSimulator2\Model\bin\Debug\Contracts.pdb
+D:\Repos\AktienSimulator2\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+D:\Repos\AktienSimulator2\Model\obj\Debug\Model.dll
+D:\Repos\AktienSimulator2\Model\obj\Debug\Model.pdb

@@ -4,7 +4,7 @@
 
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="de">
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Börse</title>
@@ -46,9 +46,9 @@
                 Anzahl:
                 <asp:TextBox ID="textAnzahl" runat="server" CssClass="textfield">1</asp:TextBox>
 
-                <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <asp:UpdatePanel ID="UpdatePanelStock" runat="server">
                     <ContentTemplate>
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnDataBinding="GridView1_DataBinding" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="shadowTable">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnDataBinding="GridView1_DataBinding" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="resizeTable">
                             <Columns>
                                 <asp:BoundField DataField="Bezeichnung" HeaderText="Aktie" ReadOnly="True" SortExpression="Aktie" />
                                 <asp:BoundField DataField="Kurs" ItemStyle-CssClass="StockmarketCourse" DataFormatString="{0:C2}" HeaderText="Kurs" ReadOnly="True" SortExpression="Kurs" />

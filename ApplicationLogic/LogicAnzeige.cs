@@ -1,9 +1,5 @@
 ﻿using Model;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ApplicationLogic
 {
@@ -22,7 +18,6 @@ namespace ApplicationLogic
                     list.Add(0);
                 }
                 dictKurse.Add(aktie.ID, list);
-
             }
         }
 
