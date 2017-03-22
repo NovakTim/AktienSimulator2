@@ -13,15 +13,6 @@ namespace AktienSimulator {
     public partial class Boerse {
         
         /// <summary>
-        /// Panel1-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-        
-        /// <summary>
         /// ScriptManager1-Steuerelement
         /// </summary>
         /// <remarks>
@@ -31,24 +22,6 @@ namespace AktienSimulator {
         protected global::System.Web.UI.ScriptManager ScriptManager1;
         
         /// <summary>
-        /// btnSave-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSave;
-        
-        /// <summary>
-        /// btnTest-Steuerelement
-        /// </summary>
-        /// <remarks>
-        /// Automatisch generiertes Feld
-        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTest;
-        
-        /// <summary>
         /// lblAccount-Steuerelement
         /// </summary>
         /// <remarks>
@@ -56,6 +29,15 @@ namespace AktienSimulator {
         /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblAccount;
+        
+        /// <summary>
+        /// btnSave-Steuerelement
+        /// </summary>
+        /// <remarks>
+        /// Automatisch generiertes Feld
+        /// Zum Ändern Felddeklaration aus der Designerdatei in eine Code-Behind-Datei verschieben.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
         
         /// <summary>
         /// textKreditHöhe-Steuerelement

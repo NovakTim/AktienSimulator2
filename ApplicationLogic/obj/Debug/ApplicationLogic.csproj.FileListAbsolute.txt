@@ -38,3 +38,13 @@ C:\Users\Tim\Downloads\AktienSimulator\ApplicationLogic\bin\Debug\Model.dll.conf
 C:\Users\Tim\Downloads\AktienSimulator\ApplicationLogic\obj\Debug\ApplicationLogic.csprojResolveAssemblyReference.cache
 C:\Users\Tim\Downloads\AktienSimulator\ApplicationLogic\obj\Debug\ApplicationLogic.dll
 C:\Users\Tim\Downloads\AktienSimulator\ApplicationLogic\obj\Debug\ApplicationLogic.pdb
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\ApplicationLogic.dll
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\ApplicationLogic.pdb
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Contracts.dll
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Model.dll
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Contracts.pdb
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Model.pdb
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\bin\Debug\Model.dll.config
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.csprojResolveAssemblyReference.cache
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.dll
+C:\Users\Picblick\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.pdb
