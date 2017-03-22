@@ -1,0 +1,10 @@
+D:\AktienSim\AktienSimulator\Contracts\bin\Debug\Contracts.dll
+D:\AktienSim\AktienSimulator\Contracts\bin\Debug\Contracts.pdb
+D:\AktienSim\AktienSimulator\Contracts\obj\Debug\Contracts.csprojResolveAssemblyReference.cache
+D:\AktienSim\AktienSimulator\Contracts\obj\Debug\Contracts.dll
+D:\AktienSim\AktienSimulator\Contracts\obj\Debug\Contracts.pdb
+D:\Project\AktienSimulator\AktienSimulator\Contracts\bin\Debug\Contracts.dll
+D:\Project\AktienSimulator\AktienSimulator\Contracts\bin\Debug\Contracts.pdb
+D:\Project\AktienSimulator\AktienSimulator\Contracts\obj\Debug\Contracts.csprojResolveAssemblyReference.cache
+D:\Project\AktienSimulator\AktienSimulator\Contracts\obj\Debug\Contracts.dll
+D:\Project\AktienSimulator\AktienSimulator\Contracts\obj\Debug\Contracts.pdb
