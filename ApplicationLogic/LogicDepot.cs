@@ -7,9 +7,14 @@ namespace ApplicationLogic
 {
     public static class LogicDepot
     {
-        public static List<AktienSimulatorDataSet.DepotRow> GetDepots(string nickname)
+        public static AktienSimulatorDataSet.DepotRow AddAktieToDepots(string nickname, List<AktienSimulatorDataSet.DepotRow> depots, int aktieID)
         {
-            return Database.DataSet.Depot.Where(x => x.Account == nickname).ToList();
+            var row = Database.DataSet.Depot.NewDepotRow();
+            row.Account = nickname;
+            row.Aktie = aktieID;
+            row.Anzahl = 0;
+            Database.DataSet.Depot.Rows.Add(row);
+            return row;
         }
 
         public static AktienSimulatorDataSet.DepotRow GetDepotOrCreate(string nickname, List<AktienSimulatorDataSet.DepotRow> depots, int aktieID, ref bool newDepotCreated)
@@ -26,14 +31,9 @@ namespace ApplicationLogic
             return depot;
         }
 
-        public static AktienSimulatorDataSet.DepotRow AddAktieToDepots(string nickname, List<AktienSimulatorDataSet.DepotRow> depots, int aktieID)
+        public static List<AktienSimulatorDataSet.DepotRow> GetDepots(string nickname)
         {
-            var row = Database.DataSet.Depot.NewDepotRow();
-            row.Account = nickname;
-            row.Aktie = aktieID;
-            row.Anzahl = 0;
-            Database.DataSet.Depot.Rows.Add(row);
-            return row;
+            return Database.DataSet.Depot.Where(x => x.Account == nickname).ToList();
         }
     }
 }

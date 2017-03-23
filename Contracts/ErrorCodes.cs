@@ -2,10 +2,10 @@
 {
     public class ErrorCodes
     {
-        public enum Register
+        public enum BuyAktie
         {
             NoError = 1000,
-            NameAlreadyTaken = 2000
+            NotEnoughMoney = 2000
         }
 
         public enum Login
@@ -15,12 +15,11 @@
             WrongPassword = 3000
         }
 
-        public enum BuyAktie
+        public enum Register
         {
             NoError = 1000,
-            NotEnoughMoney = 2000
+            NameAlreadyTaken = 2000
         }
-
         public enum SellAktie
         {
             NoError = 1000,

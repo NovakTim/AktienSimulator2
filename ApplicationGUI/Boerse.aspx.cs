@@ -2,7 +2,6 @@
 using Contracts;
 using Model;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
 using System.Web.UI.DataVisualization.Charting;
@@ -12,32 +11,20 @@ namespace AktienSimulator
 {
     public partial class Boerse : GenericPage
     {
-        protected override void Page_Load(object sender, EventArgs e)
+        private static int countRefresh = 20;
+
+        protected void btnKreditAufnehmen_Click(object sender, EventArgs e)
         {
-            GridView1.DataBind();
-            lblBilanz.DataBind();
-            lblAccount.DataBind();
+            if (Account != null)
+
+                LogicKredit.KreditAufnehmen(Account, Convert.ToDecimal(textKreditHöhe.Text));
         }
 
-        protected void TimerTick(object sender, EventArgs e)
+        protected void btnRepayKredit_Click(object sender, EventArgs e)
         {
-            var aktien = Database.DataSet.Aktie.ToList();
-            LogicEvent.UpdateChangeEvent(aktien);
-            LogicEvent.UpdateKurswert(aktien);
-
             if (Account != null)
-            {
-                var depots = LogicDepot.GetDepots(Account.Nickname);
-                LogicDividende.UpdateDividende(Account, depots);
-                LogicKredit.UpdateKreditSchuld(Account);
 
-                LogicAnzeige.UpdateDictionary(aktien);
-
-            }
-
-            GridView1.DataBind();
-            lblBilanz.DataBind();
-            lblSchulden.DataBind();
+                LogicKredit.RepayKredit(Account, Convert.ToDecimal(textKreditHöhe.Text));
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -49,14 +36,8 @@ namespace AktienSimulator
         {
         }
 
-        protected void lblAccount_DataBinding(object sender, EventArgs e)
-        {
-            lblAccount.Text = Account?.Nickname;
-        }
-
         protected void GridView1_DataBinding(object sender, EventArgs e)
         {
-
             GridView1.DataSource = Database.DataSet.Aktie.ToList();
         }
 
@@ -103,33 +84,31 @@ namespace AktienSimulator
             lblBilanz.DataBind();
         }
 
-        protected void lblBilanz_DataBinding(object sender, EventArgs e)
-        {
-            lblBilanz.Text = Account?.Bilanz.ToString("0,0.00");
-        }
-
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Literal litEvent = e.Row.FindControl("litEvent") as Literal;
                 Literal litAnzahl = e.Row.FindControl("litAnzahl") as Literal;
-                Chart courseChart = e.Row.FindControl("courseChart") as Chart;
-                Series courseChartSeries = courseChart.Series["stockCourse"];
 
-                Chart bakChart = e.Row.FindControl("bakChart") as Chart;
-                Series bakstockCourse = courseChart.Series["stockCourse"];
+                //Chart bakChart = e.Row.FindControl("bakChart") as Chart;
+                //Series bakstockCourse = courseChart.Series["stockCourse"];
 
                 AktienSimulatorDataSet.AktieRow aktie = e.Row.DataItem as AktienSimulatorDataSet.AktieRow;
                 var kurse = LogicAnzeige.dictKurse[aktie.ID];
                 for (int i = 0; i < kurse.Count; i++)
                 {
                     // var kurs in kurse
-                    courseChartSeries.Points.AddXY(i, kurse[i]);
-                    bakstockCourse.Points.AddXY(i, kurse[i]);
+                    if (countRefresh == 0)
+                    {
+                        Chart courseChart = e.Row.FindControl("courseChart") as Chart;
+                        Series courseChartSeries = courseChart.Series["stockCourse"];
+                        countRefresh = 20;
+                        courseChartSeries.Points.AddXY(i, kurse[i]);
+                    }
+                    countRefresh--;
+                    //bakstockCourse.Points.AddXY(i, kurse[i]);
                 }
-                
-                
 
                 //LogicAnzeige.dictKurse[aktie.ID]
                 litEvent.Text = aktie.EventRow.Bezeichnung;
@@ -141,24 +120,47 @@ namespace AktienSimulator
             }
         }
 
-        protected void btnKreditAufnehmen_Click(object sender, EventArgs e)
+        protected void lblAccount_DataBinding(object sender, EventArgs e)
         {
-            if (Account != null)
+            lblAccount.Text = Account?.Nickname;
+        }
 
-                LogicKredit.KreditAufnehmen(Account, Convert.ToDecimal(textKreditHöhe.Text));
+        protected void lblBilanz_DataBinding(object sender, EventArgs e)
+        {
+            lblBilanz.Text = Account?.Bilanz.ToString("0,0.00");
         }
 
         protected void lblSchulden_DataBinding(object sender, EventArgs e)
         {
-            if(Account != null)
-            lblSchulden.Text = LogicKredit.GetGesamtSchuld(Account.Nickname).ToString("0,0.00");
+            if (Account != null)
+                lblSchulden.Text = LogicKredit.GetGesamtSchuld(Account.Nickname).ToString("0,0.00");
         }
 
-        protected void btnRepayKredit_Click(object sender, EventArgs e)
+        protected override void Page_Load(object sender, EventArgs e)
         {
-            if (Account != null)
+            GridView1.DataBind();
+            lblBilanz.DataBind();
+            lblAccount.DataBind();
+        }
 
-                LogicKredit.RepayKredit(Account, Convert.ToDecimal(textKreditHöhe.Text));
+        protected void TimerTick(object sender, EventArgs e)
+        {
+            var aktien = Database.DataSet.Aktie.ToList();
+            LogicEvent.UpdateChangeEvent(aktien);
+            LogicEvent.UpdateKurswert(aktien);
+
+            if (Account != null)
+            {
+                var depots = LogicDepot.GetDepots(Account.Nickname);
+                LogicDividende.UpdateDividende(Account, depots);
+                LogicKredit.UpdateKreditSchuld(Account);
+
+                LogicAnzeige.UpdateDictionary(aktien);
+            }
+
+            GridView1.DataBind();
+            lblBilanz.DataBind();
+            lblSchulden.DataBind();
         }
     }
 }

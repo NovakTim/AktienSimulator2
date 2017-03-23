@@ -11,30 +11,12 @@ namespace Model
         public static AktienSimulatorDataSet DataSet { get; set; }
         public static TableAdapterManager TableAdapterManager { get; set; }
 
-        public static void Initialize()
-        {
-            DataSet = new AktienSimulatorDataSet();
-
-            TableAdapterManager = new TableAdapterManager();
-            TableAdapterManager.AccountTableAdapter = new AccountTableAdapter();
-            TableAdapterManager.AktieTableAdapter = new AktieTableAdapter();
-            TableAdapterManager.DepotTableAdapter = new DepotTableAdapter();
-            TableAdapterManager.EventTableAdapter = new EventTableAdapter();
-            TableAdapterManager.KreditTableAdapter = new KreditTableAdapter();
-        }
-
         public static void CacheRelevantTables()
         {
             TableAdapterManager.AktieTableAdapter.Fill(DataSet.Aktie);
             TableAdapterManager.EventTableAdapter.Fill(DataSet.Event);
             TableAdapterManager.DepotTableAdapter.Fill(DataSet.Depot);
             TableAdapterManager.KreditTableAdapter.Fill(DataSet.Kredit);
-        }
-
-        public static void SaveDatabase()
-        {
-            TableAdapterManager.DepotTableAdapter.Update(DataSet.Depot);
-            TableAdapterManager.KreditTableAdapter.Update(DataSet.Kredit);
         }
 
         public static AktienSimulatorDataSet.AccountRow CheckLogIn(string nickname, string password, ref ErrorCodes.Login errorcode)
@@ -86,6 +68,23 @@ namespace Model
             TableAdapterManager.DepotTableAdapter.Adapter.SelectCommand.Parameters["@Account"].Value = nickname;
 
             TableAdapterManager.DepotTableAdapter.Adapter.Fill(DataSet.Depot);
+        }
+
+        public static void Initialize()
+        {
+            DataSet = new AktienSimulatorDataSet();
+
+            TableAdapterManager = new TableAdapterManager();
+            TableAdapterManager.AccountTableAdapter = new AccountTableAdapter();
+            TableAdapterManager.AktieTableAdapter = new AktieTableAdapter();
+            TableAdapterManager.DepotTableAdapter = new DepotTableAdapter();
+            TableAdapterManager.EventTableAdapter = new EventTableAdapter();
+            TableAdapterManager.KreditTableAdapter = new KreditTableAdapter();
+        }
+        public static void SaveDatabase()
+        {
+            TableAdapterManager.DepotTableAdapter.Update(DataSet.Depot);
+            TableAdapterManager.KreditTableAdapter.Update(DataSet.Kredit);
         }
     }
 }

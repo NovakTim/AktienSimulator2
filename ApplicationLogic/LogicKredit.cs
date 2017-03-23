@@ -8,6 +8,17 @@ namespace ApplicationLogic
     {
         public const decimal PROZENTUALE_ZINSEN = 0.001m;
 
+        public static decimal GetGesamtSchuld(string nickname)
+        {
+            var kredite = GetKredite(nickname);
+            return kredite.Sum(x => x.Rest);
+        }
+
+        public static List<AktienSimulatorDataSet.KreditRow> GetKredite(string nickname)
+        {
+            return Database.DataSet.Kredit.Where(x => x.Account == nickname).ToList();
+        }
+
         public static void KreditAufnehmen(AktienSimulatorDataSet.AccountRow account, decimal amount)
         {
             var row = Database.DataSet.Kredit.NewKreditRow();
@@ -17,21 +28,6 @@ namespace ApplicationLogic
             Database.DataSet.Kredit.Rows.Add(row);
             account.Bilanz += amount;
         }
-
-        public static List<AktienSimulatorDataSet.KreditRow> GetKredite(string nickname)
-        {
-            return Database.DataSet.Kredit.Where(x => x.Account == nickname).ToList();
-        }
-
-        public static void UpdateKreditSchuld(AktienSimulatorDataSet.AccountRow account)
-        {
-            var kredite = GetKredite(account.Nickname);
-            foreach (var kredit in kredite)
-            {
-                kredit.Rest *= 1 + PROZENTUALE_ZINSEN;
-            }
-        }
-
         public static void RepayKredit(AktienSimulatorDataSet.AccountRow account, decimal amount)
         {
             var kredite = GetKredite(account.Nickname);
@@ -56,10 +52,13 @@ namespace ApplicationLogic
             account.Bilanz -= amount + payback;
         }
 
-        public static decimal GetGesamtSchuld(string nickname)
+        public static void UpdateKreditSchuld(AktienSimulatorDataSet.AccountRow account)
         {
-            var kredite = GetKredite(nickname);
-            return kredite.Sum(x => x.Rest);
+            var kredite = GetKredite(account.Nickname);
+            foreach (var kredit in kredite)
+            {
+                kredit.Rest *= 1 + PROZENTUALE_ZINSEN;
+            }
         }
     }
 }

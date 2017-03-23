@@ -7,6 +7,13 @@ namespace ApplicationLogic
 {
     public static class LogicAccount
     {
+        public static AktienSimulatorDataSet.AccountRow LogIn(string nickname, string password, ref ErrorCodes.Login errorcode)
+        {
+            var account = Database.CheckLogIn(nickname, password, ref errorcode);
+
+            return account;
+        }
+
         public static ErrorCodes.Register RegisterAccount(string nickname, string password)
         {
             try
@@ -19,13 +26,6 @@ namespace ApplicationLogic
             {
                 return ErrorCodes.Register.NameAlreadyTaken;
             }
-        }
-
-        public static AktienSimulatorDataSet.AccountRow LogIn(string nickname, string password, ref ErrorCodes.Login errorcode)
-        {
-            var account = Database.CheckLogIn(nickname, password, ref errorcode);
-
-            return account;
         }
     }
 }

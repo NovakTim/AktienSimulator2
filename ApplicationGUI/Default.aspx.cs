@@ -6,28 +6,6 @@ namespace AktienSimulator
 {
     public partial class Default : GenericPage
     {
-        protected override void Page_Load(object sender, EventArgs e)
-        {
-        }
-
-        protected void btnRegistrieren_Click(object sender, EventArgs e)
-        {
-            var errorcode = LogicAccount.RegisterAccount(textNickname.Text, textPassword.Text);
-            switch (errorcode)
-            {
-                case ErrorCodes.Register.NoError:
-                    Response.Write("<script>alert('Erfolgreich registriert.');</script>");
-                    break;
-
-                case ErrorCodes.Register.NameAlreadyTaken:
-                    Response.Write("<script>alert('Benutzername ist schon vergeben.');</script>");
-                    break;
-
-                default:
-                    break;
-            }
-        }
-
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             ErrorCodes.Login errorcode = ErrorCodes.Login.NoError;
@@ -51,6 +29,28 @@ namespace AktienSimulator
                 default:
                     break;
             }
+        }
+
+        protected void btnRegistrieren_Click(object sender, EventArgs e)
+        {
+            var errorcode = LogicAccount.RegisterAccount(textNickname.Text, textPassword.Text);
+            switch (errorcode)
+            {
+                case ErrorCodes.Register.NoError:
+                    Response.Write("<script>alert('Erfolgreich registriert.');</script>");
+                    break;
+
+                case ErrorCodes.Register.NameAlreadyTaken:
+                    Response.Write("<script>alert('Benutzername ist schon vergeben.');</script>");
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
+        protected override void Page_Load(object sender, EventArgs e)
+        {
         }
     }
 }

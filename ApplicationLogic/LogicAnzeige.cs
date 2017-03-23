@@ -23,7 +23,6 @@ namespace ApplicationLogic
 
         //public static void UpdateDictionary(int id, decimal kurs)
         //{
-
         //    dictKurse[id].RemoveAt(0);
         //    dictKurse[id].Add(kurs);
         //}
@@ -34,11 +33,10 @@ namespace ApplicationLogic
             {
                 int i = 0;
                 var item = dictKurse[aktie.ID];
-                    item.RemoveAt(0);
-                    item.Add(aktie.Kurs);
+                item.RemoveAt(0);
+                item.Add(aktie.Kurs);
                 i++;
             }
-                
         }
     }
 }

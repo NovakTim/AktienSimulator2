@@ -39,6 +39,27 @@
                     </td>
                 </tr>
             </table>
+            <asp:UpdatePanel runat="server">
+                <ContentTemplate>
+                    <table>
+                        <tr>
+                            <td>Ihre Bilanz:
+                            </td>
+                            <td>
+                                <asp:Label ID="lblBilanz" runat="server" OnDataBinding="lblBilanz_DataBinding"></asp:Label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Ihre Schulden:
+                            </td>
+                            <td>
+                                <asp:Label ID="lblSchulden" runat="server" OnDataBinding="lblSchulden_DataBinding" Text="0"></asp:Label>
+                            </td>
+                        </tr>
+                    </table>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
             <%--<asp:Button ID="btnTest" runat="server" OnClick="btnTest_Click" Text="Test" Width="87px" />--%>
 
             <br />
@@ -63,66 +84,33 @@
                                         <asp:Literal ID="litAnzahl" runat="server" />
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:TemplateField>
+                                <asp:TemplateField HeaderText="Verlauf">
                                     <ItemTemplate>
-                                        <asp:Chart runat="server" Height="100px" Width="150px" BackColor="Transparent" ID="courseChart">
-                                    <series><asp:Series Name="stockCourse" ChartType="Area"></asp:Series></series>
-                                    <chartareas><asp:ChartArea Name="ChartArea1" BackColor="Transparent">
-
-                                        <AxisX Enabled="False">
-                                        </AxisX>
-                                        <AxisX2 Enabled="False">
-                                        </AxisX2>
-                                        <AxisY2 Enabled="False">
-                                        </AxisY2>
-                                        </asp:ChartArea></chartareas>
-                </asp:Chart>
-
-                                        <asp:Chart runat="server" Height="100px" Width="150px" BackColor="Transparent" ID="bakChart">
-                                    <series><asp:Series Name="stockCourse" ChartType="Area"></asp:Series></series>
-                                    <chartareas><asp:ChartArea Name="bakChartArea" BackColor="Transparent">
-
-                                        <AxisX Enabled="False">
-                                        </AxisX>
-                                        <AxisX2 Enabled="False">
-                                        </AxisX2>
-                                        <AxisY2 Enabled="False">
-                                        </AxisY2>
-                                        </asp:ChartArea></chartareas>
-                </asp:Chart>
+                                        <asp:Chart runat="server" BackColor="Transparent" ID="courseChart" Height="60">
+                                            <Series>
+                                                <asp:Series Name="stockCourse" ChartType="Area"></asp:Series>
+                                            </Series>
+                                            <ChartAreas>
+                                                <asp:ChartArea Name="ChartArea1" BackColor="Transparent">
+                                                    <AxisY Interval="100">
+                                                        <LabelStyle Enabled="False" />
+                                                    </AxisY>
+                                                    <AxisX Enabled="False"></AxisX>
+                                                    <AxisX2 Enabled="False"></AxisX2>
+                                                    <AxisY2 Enabled="False"></AxisY2>
+                                                </asp:ChartArea>
+                                            </ChartAreas>
+                                        </asp:Chart>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:ButtonField ButtonType="Button" CommandName="Kaufen" Text="Kaufen" ControlStyle-CssClass="button" />
                                 <asp:ButtonField ButtonType="Button" CommandName="Verkaufen" Text="Verkaufen" ControlStyle-CssClass="button" />
                             </Columns>
                         </asp:GridView>
-                        <br />
-                        <table>
-                            <tr>
-                                <td>Ihre Bilanz:
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblBilanz" runat="server" OnDataBinding="lblBilanz_DataBinding"></asp:Label>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Ihre Schulden:
-                                </td>
-                                <td>
-                                    <asp:Label ID="lblSchulden" runat="server" OnDataBinding="lblSchulden_DataBinding" Text="0"></asp:Label>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <br />
                         <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="TimerTick"></asp:Timer>
-                        
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
-            <br />
-            
-            <br />
         </div>
     </form>
 </body>
