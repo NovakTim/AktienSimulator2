@@ -1,4 +1,5 @@
-﻿using Model;
+﻿using ApplicationLogic;
+using Model;
 using System;
 
 namespace AktienSimulator
@@ -9,6 +10,7 @@ namespace AktienSimulator
         {
             Database.Initialize();
             Database.CacheRelevantTables();
+            LogicAnzeige.InitializeDictionary();
         }
 
         protected void Session_Start(object sender, EventArgs e)

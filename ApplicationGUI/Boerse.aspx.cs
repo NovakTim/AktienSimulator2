@@ -2,8 +2,10 @@
 using Contracts;
 using Model;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.UI;
+using System.Web.UI.DataVisualization.Charting;
 using System.Web.UI.WebControls;
 
 namespace AktienSimulator
@@ -27,8 +29,10 @@ namespace AktienSimulator
             {
                 var depots = LogicDepot.GetDepots(Account.Nickname);
                 LogicDividende.UpdateDividende(Account, depots);
-
                 LogicKredit.UpdateKreditSchuld(Account);
+
+                LogicAnzeige.UpdateDictionary(aktien);
+
             }
 
             GridView1.DataBind();
@@ -52,6 +56,7 @@ namespace AktienSimulator
 
         protected void GridView1_DataBinding(object sender, EventArgs e)
         {
+
             GridView1.DataSource = Database.DataSet.Aktie.ToList();
         }
 
@@ -109,7 +114,24 @@ namespace AktienSimulator
             {
                 Literal litEvent = e.Row.FindControl("litEvent") as Literal;
                 Literal litAnzahl = e.Row.FindControl("litAnzahl") as Literal;
+                Chart courseChart = e.Row.FindControl("courseChart") as Chart;
+                Series courseChartSeries = courseChart.Series["stockCourse"];
+
+                Chart bakChart = e.Row.FindControl("bakChart") as Chart;
+                Series bakstockCourse = courseChart.Series["stockCourse"];
+
                 AktienSimulatorDataSet.AktieRow aktie = e.Row.DataItem as AktienSimulatorDataSet.AktieRow;
+                var kurse = LogicAnzeige.dictKurse[aktie.ID];
+                for (int i = 0; i < kurse.Count; i++)
+                {
+                    // var kurs in kurse
+                    courseChartSeries.Points.AddXY(i, kurse[i]);
+                    bakstockCourse.Points.AddXY(i, kurse[i]);
+                }
+                
+                
+
+                //LogicAnzeige.dictKurse[aktie.ID]
                 litEvent.Text = aktie.EventRow.Bezeichnung;
                 var depot = Depots?.FirstOrDefault(x => x.Aktie == aktie.ID);
                 if (depot != null)
@@ -121,17 +143,22 @@ namespace AktienSimulator
 
         protected void btnKreditAufnehmen_Click(object sender, EventArgs e)
         {
-            LogicKredit.KreditAufnehmen(Account, Convert.ToDecimal(textKreditHöhe.Text));
+            if (Account != null)
+
+                LogicKredit.KreditAufnehmen(Account, Convert.ToDecimal(textKreditHöhe.Text));
         }
 
         protected void lblSchulden_DataBinding(object sender, EventArgs e)
         {
+            if(Account != null)
             lblSchulden.Text = LogicKredit.GetGesamtSchuld(Account.Nickname).ToString("0,0.00");
         }
 
         protected void btnRepayKredit_Click(object sender, EventArgs e)
         {
-            LogicKredit.RepayKredit(Account, Convert.ToDecimal(textKreditHöhe.Text));
+            if (Account != null)
+
+                LogicKredit.RepayKredit(Account, Convert.ToDecimal(textKreditHöhe.Text));
         }
     }
 }

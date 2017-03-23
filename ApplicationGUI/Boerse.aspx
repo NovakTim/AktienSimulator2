@@ -48,7 +48,7 @@
 
                 <asp:UpdatePanel ID="UpdatePanelStock" runat="server">
                     <ContentTemplate>
-                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnDataBinding="GridView1_DataBinding" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" CssClass="resizeTable">
+                        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="ID" OnDataBinding="GridView1_DataBinding" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" BorderStyle="None" CssClass="resizeTable">
                             <Columns>
                                 <asp:BoundField DataField="Bezeichnung" HeaderText="Aktie" ReadOnly="True" SortExpression="Aktie" />
                                 <asp:BoundField DataField="Kurs" ItemStyle-CssClass="StockmarketCourse" DataFormatString="{0:C2}" HeaderText="Kurs" ReadOnly="True" SortExpression="Kurs" />
@@ -61,6 +61,35 @@
                                 <asp:TemplateField HeaderText="Anzahl">
                                     <ItemTemplate>
                                         <asp:Literal ID="litAnzahl" runat="server" />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField>
+                                    <ItemTemplate>
+                                        <asp:Chart runat="server" Height="100px" Width="150px" BackColor="Transparent" ID="courseChart">
+                                    <series><asp:Series Name="stockCourse" ChartType="Area"></asp:Series></series>
+                                    <chartareas><asp:ChartArea Name="ChartArea1" BackColor="Transparent">
+
+                                        <AxisX Enabled="False">
+                                        </AxisX>
+                                        <AxisX2 Enabled="False">
+                                        </AxisX2>
+                                        <AxisY2 Enabled="False">
+                                        </AxisY2>
+                                        </asp:ChartArea></chartareas>
+                </asp:Chart>
+
+                                        <asp:Chart runat="server" Height="100px" Width="150px" BackColor="Transparent" ID="bakChart">
+                                    <series><asp:Series Name="stockCourse" ChartType="Area"></asp:Series></series>
+                                    <chartareas><asp:ChartArea Name="bakChartArea" BackColor="Transparent">
+
+                                        <AxisX Enabled="False">
+                                        </AxisX>
+                                        <AxisX2 Enabled="False">
+                                        </AxisX2>
+                                        <AxisY2 Enabled="False">
+                                        </AxisY2>
+                                        </asp:ChartArea></chartareas>
+                </asp:Chart>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:ButtonField ButtonType="Button" CommandName="Kaufen" Text="Kaufen" ControlStyle-CssClass="button" />
@@ -87,10 +116,12 @@
 
                         <br />
                         <asp:Timer ID="Timer1" runat="server" Interval="1000" OnTick="TimerTick"></asp:Timer>
+                        
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>
             <br />
+            
             <br />
         </div>
     </form>

@@ -5,7 +5,7 @@ namespace ApplicationLogic
 {
     public class LogicAnzeige
     {
-        public const int COUNT = 7;
+        public const int COUNT = 80;
         public static Dictionary<int, List<decimal>> dictKurse = new Dictionary<int, List<decimal>>();
 
         public static void InitializeDictionary()
@@ -21,10 +21,24 @@ namespace ApplicationLogic
             }
         }
 
-        public static void UpdateDictionary(int id, decimal kurs)
+        //public static void UpdateDictionary(int id, decimal kurs)
+        //{
+
+        //    dictKurse[id].RemoveAt(0);
+        //    dictKurse[id].Add(kurs);
+        //}
+
+        public static void UpdateDictionary(List<AktienSimulatorDataSet.AktieRow> aktienList)
         {
-            dictKurse[id].RemoveAt(0);
-            dictKurse[id].Add(kurs);
+            foreach (var aktie in aktienList)
+            {
+                int i = 0;
+                var item = dictKurse[aktie.ID];
+                    item.RemoveAt(0);
+                    item.Add(aktie.Kurs);
+                i++;
+            }
+                
         }
     }
 }

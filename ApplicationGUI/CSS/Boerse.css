@@ -14,6 +14,7 @@ body {
 }
 
 .resizeTable {
+    box-shadow:none;
     overflow: auto;
     display: block;
 }
