@@ -11,11 +11,11 @@ namespace AktienSimulator
         {
             get
             {
-                return Session["Account"] as AktienSimulatorDataSet.AccountRow;
+                return Database.DataSet.Account.Rows.Find(Session["Account"]) as AktienSimulatorDataSet.AccountRow;
             }
             set
             {
-                Session["Account"] = value;
+                Session["Account"] = value.Nickname;
                 UpdateDepots();
             }
         }

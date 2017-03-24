@@ -13,6 +13,7 @@ namespace Model
 
         public static void CacheRelevantTables()
         {
+            TableAdapterManager.AccountTableAdapter.Fill(DataSet.Account);
             TableAdapterManager.AktieTableAdapter.Fill(DataSet.Aktie);
             TableAdapterManager.EventTableAdapter.Fill(DataSet.Event);
             TableAdapterManager.DepotTableAdapter.Fill(DataSet.Depot);
@@ -81,9 +82,11 @@ namespace Model
             TableAdapterManager.EventTableAdapter = new EventTableAdapter();
             TableAdapterManager.KreditTableAdapter = new KreditTableAdapter();
         }
-        public static void SaveDatabase()
+
+        public static void SaveDatabase(AktienSimulatorDataSet.AccountRow account)
         {
             TableAdapterManager.DepotTableAdapter.Update(DataSet.Depot);
+            TableAdapterManager.AccountTableAdapter.Update(account);
             TableAdapterManager.KreditTableAdapter.Update(DataSet.Kredit);
         }
     }

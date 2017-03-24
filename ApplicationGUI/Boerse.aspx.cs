@@ -16,20 +16,38 @@ namespace AktienSimulator
         protected void btnKreditAufnehmen_Click(object sender, EventArgs e)
         {
             if (Account != null)
-
-                LogicKredit.KreditAufnehmen(Account, Convert.ToDecimal(textKreditHöhe.Text));
+            {
+                try
+                {
+                    decimal value = Convert.ToDecimal(textKreditHöhe.Text);
+                    LogicKredit.KreditAufnehmen(Account, value);
+                }
+                catch (Exception)
+                {
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('Falsches Eingabeformat!');", true);
+                }
+            }
         }
 
         protected void btnRepayKredit_Click(object sender, EventArgs e)
         {
             if (Account != null)
-
-                LogicKredit.RepayKredit(Account, Convert.ToDecimal(textKreditHöhe.Text));
+            {
+                try
+                {
+                    decimal value = Convert.ToDecimal(textKreditHöhe.Text);
+                    LogicKredit.RepayKredit(Account, value);
+                }
+                catch (Exception)
+                {
+                    ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('Falsches Eingabeformat!');", true);
+                }
+            }
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            Database.SaveDatabase();
+            Database.SaveDatabase(Account);
         }
 
         protected void btnTest_Click(object sender, EventArgs e)

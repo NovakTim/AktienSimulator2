@@ -1,4 +1,5 @@
 ﻿using Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -58,6 +59,7 @@ namespace ApplicationLogic
             foreach (var kredit in kredite)
             {
                 kredit.Rest *= 1 + PROZENTUALE_ZINSEN;
+                kredit.Rest = Math.Round(kredit.Rest, 2);
             }
         }
     }

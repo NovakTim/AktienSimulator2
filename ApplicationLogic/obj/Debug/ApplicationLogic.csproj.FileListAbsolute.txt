@@ -68,3 +68,13 @@ C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\ApplicationLogic\bin\
 C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.csprojResolveAssemblyReference.cache
 C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.dll
 C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.pdb
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\bin\Debug\ApplicationLogic.dll
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\bin\Debug\ApplicationLogic.pdb
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\bin\Debug\Contracts.dll
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\bin\Debug\Model.dll
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\bin\Debug\Contracts.pdb
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\bin\Debug\Model.pdb
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\bin\Debug\Model.dll.config
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.csprojResolveAssemblyReference.cache
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.dll
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\ApplicationLogic\obj\Debug\ApplicationLogic.pdb

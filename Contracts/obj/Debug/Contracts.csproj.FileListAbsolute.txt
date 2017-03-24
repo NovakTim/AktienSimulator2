@@ -23,3 +23,7 @@ C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\Contracts\bin\Debug\C
 C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.csprojResolveAssemblyReference.cache
 C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.dll
 C:\Users\RosenbauerElias.BSZ\Source\Repos\AktienSimulator2\Contracts\obj\Debug\Contracts.pdb
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\Contracts\bin\Debug\Contracts.dll
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\Contracts\bin\Debug\Contracts.pdb
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\Contracts\obj\Debug\Contracts.dll
+D:\Eigene_Dateien\Projects\VS\AktienSimulator2\Contracts\obj\Debug\Contracts.pdb
