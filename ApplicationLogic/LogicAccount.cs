@@ -20,6 +20,7 @@ namespace ApplicationLogic
             {
                 AccountTableAdapter accountAdapter = new AccountTableAdapter();
                 accountAdapter.Insert(nickname, password, 0m);
+                Database.TableAdapterManager.AccountTableAdapter.Fill(Database.DataSet.Account);
                 return ErrorCodes.Register.NoError;
             }
             catch (OleDbException)
