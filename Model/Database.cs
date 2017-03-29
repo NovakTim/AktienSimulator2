@@ -10,7 +10,10 @@ namespace Model
     {
         public static AktienSimulatorDataSet DataSet { get; set; }
         public static TableAdapterManager TableAdapterManager { get; set; }
-
+        
+        /// <summary>
+        ///  Füllt das DataSet mit allen notwendigen Tabellen.
+        /// </summary>
         public static void CacheRelevantTables()
         {
             TableAdapterManager.AccountTableAdapter.Fill(DataSet.Account);
@@ -19,7 +22,10 @@ namespace Model
             TableAdapterManager.DepotTableAdapter.Fill(DataSet.Depot);
             TableAdapterManager.KreditTableAdapter.Fill(DataSet.Kredit);
         }
-
+        
+        /// <summary>
+        ///  Macht eine einzelne SQL-Abfrage, um einen Account einzuloggen. Gibt den Account und den Fehlercode zurück.
+        /// </summary>
         public static AktienSimulatorDataSet.AccountRow CheckLogIn(string nickname, string password, ref ErrorCodes.Login errorcode)
         {
             OleDbConnection connection = new OleDbConnection(Properties.Settings.Default.AktienSimulatorConnectionString);
@@ -31,6 +37,7 @@ namespace Model
             command.Parameters.Add("@Nickname", OleDbType.VarChar, 255);
             command.Parameters["@Nickname"].Value = nickname;
 
+            //Account suchen
             var reader = command.ExecuteReader(CommandBehavior.SingleRow);
             if (reader.HasRows)
             {
@@ -40,26 +47,30 @@ namespace Model
                 row.Passwort = reader["Passwort"].ToString();
                 row.Bilanz = Convert.ToDecimal(reader["Bilanz"]);
 
+                //Prüft das Passwort
                 if (row.Passwort == password)
-                {
+                { // Passwort korrekt
                     errorcode = ErrorCodes.Login.NoError;
                     connection.Close();
                     return row;
                 }
                 else
-                {
+                { //Passwort inkorrekt
                     errorcode = ErrorCodes.Login.WrongPassword;
                 }
             }
             else
-            {
+            { //Account wurde nicht gefunden
                 errorcode = ErrorCodes.Login.NicknameNotFound;
             }
 
             connection.Close();
             return null;
         }
-
+        
+        /// <summary>
+        ///  Füllt die Depots einens Accounts in das DataSet.
+        /// </summary>
         public static void FillDepots(string nickname)
         {
             //SQL Injection verhindern
@@ -70,7 +81,10 @@ namespace Model
 
             TableAdapterManager.DepotTableAdapter.Adapter.Fill(DataSet.Depot);
         }
-
+        
+        /// <summary>
+        ///  Initialisiert das DataSet und den TableAdapterManager.
+        /// </summary>
         public static void Initialize()
         {
             DataSet = new AktienSimulatorDataSet();
@@ -82,7 +96,10 @@ namespace Model
             TableAdapterManager.EventTableAdapter = new EventTableAdapter();
             TableAdapterManager.KreditTableAdapter = new KreditTableAdapter();
         }
-
+        
+        /// <summary>
+        ///  Speichert die notwendigen Tabellen ab.
+        /// </summary>
         public static void SaveDatabase(AktienSimulatorDataSet.AccountRow account)
         {
             TableAdapterManager.DepotTableAdapter.Update(DataSet.Depot);
