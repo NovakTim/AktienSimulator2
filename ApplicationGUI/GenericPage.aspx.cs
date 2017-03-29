@@ -6,7 +6,10 @@ using System.Collections.Generic;
 namespace AktienSimulator
 {
     public partial class GenericPage : System.Web.UI.Page
-    {
+    {        
+        /// <summary>
+        ///  Cached den angemeldeten Account.
+        /// </summary>
         public AktienSimulatorDataSet.AccountRow Account
         {
             get
@@ -19,7 +22,10 @@ namespace AktienSimulator
                 UpdateDepots();
             }
         }
-
+        
+        /// <summary>
+        ///  Lädt die Depots eines Accounts in einen Cache
+        /// </summary>
         public List<AktienSimulatorDataSet.DepotRow> Depots
         {
             get
@@ -31,7 +37,10 @@ namespace AktienSimulator
                 Session["Depots"] = value;
             }
         }
-
+        
+        /// <summary>
+        ///  Aktualisiert die Depots für den Account.
+        /// </summary>
         public void UpdateDepots()
         {
             Depots = LogicDepot.GetDepots(Account.Nickname);
