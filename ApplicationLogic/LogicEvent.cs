@@ -8,13 +8,19 @@ namespace ApplicationLogic
     public static class LogicEvent
     {
         public const int CHANGE_EVENT_CHANCE = 20;
-
+        
+        /// <summary>
+        ///  Wechselt das Event einer Aktie mit einem neuen zufälligen Event aus.
+        /// </summary>
         public static void ChangeEvent(AktienSimulatorDataSet.AktieRow aktie, Random random)
         {
             int i = random.Next() % Database.DataSet.Event.Count;
             aktie.Event = Database.DataSet.Event.ElementAt(i).ID;
         }
-
+        
+        /// <summary>
+        ///  Würfelt mit der Wahrscheinlichkeit, ob eine Aktie ein neues Event bekommen soll und macht dies dann.
+        /// </summary>
         public static void UpdateChangeEvent(List<AktienSimulatorDataSet.AktieRow> aktien)
         {
             Random random = new Random();
@@ -28,7 +34,10 @@ namespace ApplicationLogic
                 }
             }
         }
-
+        
+        /// <summary>
+        ///  Verändert den Kurswert einer Aktie, je nachdem in welchem Event es sich gerade befindet.
+        /// </summary>
         public static void UpdateKurswert(List<AktienSimulatorDataSet.AktieRow> aktien)
         {
             foreach (var aktie in aktien)
