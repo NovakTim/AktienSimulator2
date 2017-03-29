@@ -20,10 +20,12 @@ namespace AktienSimulator
                 try
                 {
                     decimal value = Convert.ToDecimal(textKreditHöhe.Text);
+                    //Kredit aufnehmen
                     LogicKredit.KreditAufnehmen(Account, value);
                 }
                 catch (Exception)
                 {
+                    //Es wurde keine Zahl im Textfeld eingegeben
                     ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('Falsches Eingabeformat!');", true);
                 }
             }
@@ -36,10 +38,12 @@ namespace AktienSimulator
                 try
                 {
                     decimal value = Convert.ToDecimal(textKreditHöhe.Text);
+                    //Zahlt die Kredite zurück
                     LogicKredit.RepayKredit(Account, value);
                 }
                 catch (Exception)
                 {
+                    //Es wurde keine Zahl im Textfeld eingegeben
                     ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('Falsches Eingabeformat!');", true);
                 }
             }
@@ -47,6 +51,7 @@ namespace AktienSimulator
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            //Speichert die Datenbank ab
             Database.SaveDatabase(Account);
         }
 
@@ -64,14 +69,16 @@ namespace AktienSimulator
             int index = Convert.ToInt32(e.CommandArgument);
             int anzahl = Convert.ToInt32(textAnzahl.Text);
             var aktie = Database.DataSet.Aktie.ElementAt(index);
-
+            
             if (e.CommandName.Equals("Kaufen"))
             {
+                //Es wurde auf Kaufen geklickt
                 bool newDepotCreated = false;
+                //Kaufe Aktie
                 var errorcode = LogicAktie.BuyAktie(Account, Depots, aktie.ID, anzahl, ref newDepotCreated);
                 switch (errorcode)
                 {
-                    case ErrorCodes.BuyAktie.NotEnoughMoney:
+                    case ErrorCodes.BuyAktie.NotEnoughMoney: //Nicht genug Geld auf dem Konto
                         ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('Sie haben nicht genügend Geld zur Verfügung!');", true);
                         break;
 
@@ -83,11 +90,13 @@ namespace AktienSimulator
             }
             else if (e.CommandName.Equals("Verkaufen"))
             {
+                //Es wurde auf Verkaufen geklickt
                 bool newDepotCreated = false;
+                //Verkaufe Aktie
                 var errorcode = LogicAktie.SellAktie(Account, Depots, aktie.ID, anzahl, ref newDepotCreated);
                 switch (errorcode)
                 {
-                    case ErrorCodes.SellAktie.NotEnoughAmount:
+                    case ErrorCodes.SellAktie.NotEnoughAmount: //Nicht genug Anteil an der Aktie
                         ScriptManager.RegisterClientScriptBlock(Page, Page.GetType(), "alert", "alert('Sie besitzen nicht die gewünschte Menge zum Verkaufen!');", true);
                         break;
 
@@ -150,6 +159,7 @@ namespace AktienSimulator
 
         protected void lblSchulden_DataBinding(object sender, EventArgs e)
         {
+            //Zeigt die Gesamtschuld an
             if (Account != null)
                 lblSchulden.Text = LogicKredit.GetGesamtSchuld(Account.Nickname).ToString("0,0.00");
         }
@@ -163,6 +173,7 @@ namespace AktienSimulator
 
         protected void TimerTick(object sender, EventArgs e)
         {
+            //Aktualisiert die UpdatePanel-Elemente
             var aktien = Database.DataSet.Aktie.ToList();
             LogicEvent.UpdateChangeEvent(aktien);
             LogicEvent.UpdateKurswert(aktien);
