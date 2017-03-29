@@ -8,6 +8,9 @@ namespace ApplicationLogic
         public const int COUNT = 80;
         public static Dictionary<int, List<decimal>> dictKurse = new Dictionary<int, List<decimal>>();
 
+        /// <summary>
+        ///  Initialisiert das Dictionary für den Graphen, damit er angezeigt werden kann.
+        /// </summary>
         public static void InitializeDictionary()
         {
             foreach (AktienSimulatorDataSet.AktieRow aktie in Database.DataSet.Aktie.Rows)
@@ -27,6 +30,9 @@ namespace ApplicationLogic
         //    dictKurse[id].Add(kurs);
         //}
 
+        /// <summary>
+        ///  Fügt einen neuen Datensatz für den Graphen einer Aktie hinzu.
+        /// </summary>
         public static void UpdateDictionary(List<AktienSimulatorDataSet.AktieRow> aktienList)
         {
             foreach (var aktie in aktienList)
