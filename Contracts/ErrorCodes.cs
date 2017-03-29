@@ -1,5 +1,8 @@
 ﻿namespace Contracts
 {
+    /// <summary>
+    ///  Gibt diverse mögliche Ablauffälle für Vorgänge an, welche für die grafische Darstellung wichtig sind.
+    /// </summary>
     public class ErrorCodes
     {
         public enum BuyAktie
