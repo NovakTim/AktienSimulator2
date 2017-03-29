@@ -6,7 +6,10 @@ using System.Linq;
 namespace ApplicationLogic
 {
     public static class LogicDepot
-    {
+    {   
+        /// <summary>
+        ///  Erstellt ein neues Depot einer Aktie für einen Account.
+        /// </summary>
         public static AktienSimulatorDataSet.DepotRow AddAktieToDepots(string nickname, List<AktienSimulatorDataSet.DepotRow> depots, int aktieID)
         {
             var row = Database.DataSet.Depot.NewDepotRow();
@@ -16,7 +19,11 @@ namespace ApplicationLogic
             Database.DataSet.Depot.Rows.Add(row);
             return row;
         }
-
+        
+        /// <summary>
+        ///  Es wird nach einen bestehenden Depot gesucht und zurückgegeben.
+        ///  Wenn keines gefunden wurde, erstellt er ein neues Depot.
+        /// </summary>
         public static AktienSimulatorDataSet.DepotRow GetDepotOrCreate(string nickname, List<AktienSimulatorDataSet.DepotRow> depots, int aktieID, ref bool newDepotCreated)
         {
             var depot = depots.FirstOrDefault(x => x.Aktie == aktieID);
@@ -30,7 +37,10 @@ namespace ApplicationLogic
 
             return depot;
         }
-
+        
+        /// <summary>
+        ///  Es wird eine Liste mit allen Depots vom einem Account zurückgeben.
+        /// </summary>
         public static List<AktienSimulatorDataSet.DepotRow> GetDepots(string nickname)
         {
             return Database.DataSet.Depot.Where(x => x.Account == nickname).ToList();
