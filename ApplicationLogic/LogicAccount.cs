@@ -7,6 +7,9 @@ namespace ApplicationLogic
 {
     public static class LogicAccount
     {
+        /// <summary>
+        ///  Versucht mit dem Account einzuloggen und gibt den Account und den Fehlercode zurück.
+        /// </summary>
         public static AktienSimulatorDataSet.AccountRow LogIn(string nickname, string password, ref ErrorCodes.Login errorcode)
         {
             var account = Database.CheckLogIn(nickname, password, ref errorcode);
@@ -14,6 +17,9 @@ namespace ApplicationLogic
             return account;
         }
 
+        /// <summary>
+        ///  Versucht einen Account zu registrieren und gibt den Fehlercode zurück.
+        /// </summary>
         public static ErrorCodes.Register RegisterAccount(string nickname, string password)
         {
             try
