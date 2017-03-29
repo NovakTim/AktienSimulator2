@@ -7,7 +7,10 @@ namespace ApplicationLogic
     public static class LogicDividende
     {
         public const decimal PROZENTUALE_DIVIDENDE = 0.4m;
-
+        
+        /// <summary>
+        ///  Schüttet die Dividende für alle angegebenen Depots auf der Bilanz eines Accounts aus.
+        /// </summary>
         public static void UpdateDividende(AktienSimulatorDataSet.AccountRow account, List<AktienSimulatorDataSet.DepotRow> depots)
         {
             decimal sum = 0m;
